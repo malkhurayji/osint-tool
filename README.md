@@ -30,7 +30,7 @@ you one table (or JSON blob) — built to be scripted, piped, and extended.
 ```bash
 pip install osint-tool          # once published to PyPI
 # or, from source:
-git clone https://github.com/YOUR_USERNAME/osint-tool
+git clone https://github.com/malkhurayji/osint-tool
 cd osint-tool
 pip install -e .
 ```

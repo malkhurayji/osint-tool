@@ -38,8 +38,8 @@ dev = [
 osint-tool = "osint_tool.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/YOUR_USERNAME/osint-tool"
-Issues = "https://github.com/YOUR_USERNAME/osint-tool/issues"
+Homepage = "https://github.com/malkhurayji/osint-tool"
+Issues = "https://github.com/malkhurayji/osint-tool/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["osint_tool"]
