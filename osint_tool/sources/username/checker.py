@@ -31,6 +31,15 @@ async def check_site(client: httpx.AsyncClient, site: dict, username: str) -> Fi
         )
 
     if method == "message":
+        if resp.status_code >= 400:
+            return Finding(
+                source=site["name"],
+                query=username,
+                status=Status.ERROR,
+                url=url,
+                detail=f"unexpected HTTP {resp.status_code} (rate limited or site is temporarily blocking requests)",
+            )
+
         text = resp.text
         not_found_marker = site.get("not_found_marker")
         found_marker = site.get("found_marker")

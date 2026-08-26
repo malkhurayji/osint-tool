@@ -63,6 +63,25 @@ async def test_message_method_found_marker():
 
 @pytest.mark.asyncio
 @respx.mock
+async def test_message_method_http_error_reports_error_not_not_found():
+    site = {
+        "name": "Steam",
+        "url": "https://example.test/{}",
+        "method": "message",
+        "found_marker": "<steamID64>",
+        "not_found_marker": "could not be found",
+    }
+    respx.get("https://example.test/bob").mock(return_value=httpx.Response(429, text="rate limited"))
+
+    async with httpx.AsyncClient() as client:
+        finding = await check_site(client, site, "bob")
+
+    assert finding.status == Status.ERROR
+    assert "429" in finding.detail
+
+
+@pytest.mark.asyncio
+@respx.mock
 async def test_message_method_only_not_found_marker_falls_back_to_found():
     site = {
         "name": "WordPress.com",
