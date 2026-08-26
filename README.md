@@ -4,19 +4,9 @@ Fan a single username or email out across a batch of **free-tier OSINT
 sources** concurrently, then correlate the results into one summary with a
 confidence score — instead of opening a dozen tabs and doing it by hand.
 
-```
-$ osint-tool username torvalds
+![demo: osint-tool username torvalds fanning out across 16 sources and landing on a summary with a 66.7% confidence score](assets/demo.gif)
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Source                        ┃ Status    ┃ URL / Detail                    ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ GitHub                        │ FOUND     │ https://github.com/torvalds    │
-│ Docker Hub                    │ FOUND     │ https://hub.docker.com/v2/...  │
-│ ...                            │ ...       │ ...                             │
-└────────────────────────────────┴───────────┴─────────────────────────────────┘
-Summary: 9 found, 5 not found, 1 errors, 0 skipped (out of 15 sources)
-confidence: 64.3% of resolved checks came back positive
-```
+*(real output from a live run — see [How correlation works](#how-correlation-works) for what the confidence score means)*
 
 ## Why
 
@@ -40,7 +30,7 @@ Requires Python 3.9+.
 ## Usage
 
 ```bash
-# Check a username across ~20 platforms, no API keys needed
+# Check a username across 16 platforms, no API keys needed
 osint-tool username torvalds
 
 # Check an email: Gravatar, MX records, disposable-domain check, EmailRep,
@@ -59,7 +49,7 @@ Every command supports `--json` and `--concurrency N`.
 
 ## Sources
 
-**Username** (no API key, 15 platforms, each verified against both a known
+**Username** (no API key, 16 platforms, each verified against both a known
 real account and a random unregistered string): GitHub, GitLab, Bitbucket,
 Docker Hub, Trello, Hacker News, Dev.to, Keybase, Behance, Dribbble,
 Lichess, Chess.com, Mastodon, HackerOne, WordPress.com, Steam.
